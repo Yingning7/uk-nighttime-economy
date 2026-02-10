@@ -47,10 +47,6 @@ A comprehensive data analytics dashboard that explores and analyses the UK night
 - Operating hours trend analysis (2019-2023)
 - Geographic cluster identification (Soho, Central London, East London, Canary Wharf)
 
-#### 3. **Workplace Analytics** (`night_workplaces.py`)
-- Integrated workplace density visualisation
-- External data integration capabilities
-
 ## 🛠️ Technical Skills Demonstrated
 
 ### Data Engineering
