@@ -1,4 +1,5 @@
-from datetime import time
+import datetime as dt
+from pathlib import Path
 
 import plotly.graph_objects as go
 import plotly.express as px
@@ -8,15 +9,14 @@ import pandas as pd
 st.title("Nighttime Business Clusters in London")
 
 
-def minutes_to_time(minutes):
+def minutes_to_time(minutes) -> dt.time:
     hours = minutes // 60
     minutes = minutes % 60
-    return time(hours, minutes)
+    return dt.time(hours, minutes)
 
 
-def load_data():
-    # df = pd.read_csv("https://raw.githubusercontent.com/Yingning7/uk-nighttime-economy/refs/heads/master/assets/data/location_hours.csv")
-    df = pd.read_csv("./assets/data/location_hours.csv")
+def load_data() -> pd.DataFrame:
+    df = pd.read_csv(Path(__file__).parents[1] / Path("assets/data/location_hours.csv"))
     df["open"] = df["open"].apply(minutes_to_time)
     df["close"] = df["close"].apply(minutes_to_time)
     return df
@@ -129,10 +129,8 @@ with right:
             "x": 0.01,
         },
     )
-
     for trace in fig.data:
         trace.name = color_map_updated.get(trace.name, trace.name)
-
     st.plotly_chart(fig, use_container_width=True)
     st.caption(
         "Clusters distribution map of night-time businesses in London. \n"
@@ -140,6 +138,7 @@ with right:
     )
 
 st.divider()
+
 st.subheader("Some Specific Night Business Clusters")
 st.markdown(
     """
@@ -164,6 +163,7 @@ st.markdown(
 )
 
 st.divider()
+
 left, right = st.columns([1, 1])
 with left:
     data = {

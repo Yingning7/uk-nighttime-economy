@@ -1,13 +1,13 @@
+from pathlib import Path
+
 import plotly.express as px
 import streamlit as st
 import pandas as pd
 
 st.title("UK Nighttime Workforce 2012 - 2022")
 
-# data = pd.read_csv("https://raw.githubusercontent.com/Yingning7/uk-nighttime-economy/refs/heads/master/assets/data/uknights_complete.csv")
-# region_lat_lon = pd.read_csv("https://raw.githubusercontent.com/Yingning7/uk-nighttime-economy/refs/heads/master/assets/data/region_lat_lon.csv")
-data = pd.read_csv("./assets/data/uknights_complete.csv")
-region_lat_lon = pd.read_csv("./assets/data/region_lat_lon.csv")
+data = pd.read_csv(Path(__file__).parents[1] / Path("assets/data/uknights_complete.csv"))
+region_lat_lon = pd.read_csv(Path(__file__).parents[1] / Path("assets/data/region_lat_lon.csv"))
 
 left, right = st.columns([1, 2])
 with left:
